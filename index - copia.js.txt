@@ -1,0 +1,68 @@
+//traductor
+function translate(text) {
+    for (const t of diccionary) {
+        text = recursiva(t);
+    }
+    return text;
+
+    function recursiva(t) {
+        if (text.includes(t.english)) {
+            text = text.replace(t.english, t.spanish);
+            recursiva(t);
+        }
+        return text;
+    }
+}
+
+function extraeText(rule, text) {
+    
+    for (let i=0; i<titles.length; i++) {
+        let init = rule.search( titles[i]+"\n" );
+        let end = rule.indexOf(".",init)+1;
+        let nextTitle = rule.search( titles[i+1] );
+        console.log(titles[i]+"\n", titles[i+1]);
+        console.log(init, end, nextTitle);
+        if( init!==-1 ){
+            text += rule.substring(init,end)+"\n";
+            rule = rule.substring(end,rule.length);
+            text += extraeText(rule, text);
+        } 
+    }
+    return text;
+}
+
+// elementos html
+const app = document.getElementById("app");
+
+
+//traducir
+for (let index = 0; index < rules.length; index++) {
+    console.log(rules.length);
+    
+    let rule = rules[index];
+    
+/*
+    titles.forEach(title => {
+        
+        let init = rule.search(title+"\n");
+        let end = rule.indexOf(".",init)+1;
+        console.log(rule);
+        console.log(init, end);
+        if( init!==-1 ){
+            text += rule.substring(init,end)+"\n";
+            rule = rule.substring(end,rule.length);
+        } 
+    });
+    app.innerText = text;
+*/
+    let text = "";
+    app.innerText = extraeText(rule, text);
+
+}
+
+
+
+
+
+
+
