@@ -44,7 +44,7 @@ const app = document.getElementById("app");
 
 //traducir
 for (let index = 0; index < rules.length; index++) {
-    //console.log(rules.length);
+    //console.log(rules.length); 
     
     let rule = rules[index];
     let text = [];
