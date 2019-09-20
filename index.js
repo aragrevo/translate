@@ -16,26 +16,15 @@ function translate(text) {
 	}
 }
 
-function extraeText(rule, text) {
-	let array = [];
+function extraeText(text, array) {
 	for (let i = 0; i < titles.length; i++) {
-		let init = rule.search(titles[i]);
-		let end = rule.indexOf(".", init) + 1; //busca punto
-
-		if (init !== -1) {
-			text.push(rule.substring(init, end) + "\n");
-			rule = rule.substring(end, rule.length);
-			array.push(true);
-
+		let includesText = text.includes(titles[i]);
+		if (includesText) {
+			array.push(text);
 			break;
 		}
-
-		if (titles[i + 1] == undefined && init == -1) {
-			array.push(false);
-		}
 	}
-	array.push(text);
-	array.push(rule);
+
 	return array;
 }
 
@@ -47,20 +36,22 @@ const app = document.getElementById("app");
 
 let rule = rules[0];
 let text = [];
-let next;
+let ruleArray = [];
 
-do {
-	[next, text, rule] = extraeText(rule, text);
-	console.log(next);
-} while (next);
+rule = rule.replace(/0.0/g, "0,0");
+text = rule.split(".");
 
 text.forEach(element => {
+	ruleArray = extraeText(element, ruleArray);
+});
+
+ruleArray.forEach(element => {
 	app.innerText += element;
 });
 
 let textSpanish = translate(document.getElementById("app").innerText);
 console.log(textSpanish);
 
-textSpanish = textSpanish.replace(". ", ".\n");
+textSpanish = textSpanish.replace(/,/g, ".");
 appTranslate.innerText = textSpanish;
 //}
