@@ -35,7 +35,7 @@ function myFunction() {
 	//traducir
 	//for (let index = 0; index < rules.length; index++) {
 
-	let rule = document.getElementById('textarea1').getAttribute('value');
+	let rule = document.getElementById('textarea1').value;
 	console.log(rule);
 	
 	let text = [];
