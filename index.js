@@ -28,30 +28,36 @@ function extraeText(text, array) {
 	return array;
 }
 
-// elementos html
-const app = document.getElementById("app");
+function myFunction() {
+	// elementos html
+	const app = document.getElementById("app");
 
-//traducir
-//for (let index = 0; index < rules.length; index++) {
+	//traducir
+	//for (let index = 0; index < rules.length; index++) {
 
-let rule = rules[0];
-let text = [];
-let ruleArray = [];
+	let rule = document.getElementById('textarea1').getAttribute('value');
+	console.log(rule);
+	
+	let text = [];
+	let ruleArray = [];
 
-rule = rule.replace(/0.0/g, "0,0");
-text = rule.split(".");
+	rule = rule.replace(/0.0/g, "0,0");
+	text = rule.split(".");
 
-text.forEach(element => {
-	ruleArray = extraeText(element, ruleArray);
-});
+	text.forEach(element => {
+		ruleArray = extraeText(element, ruleArray);
+	});
 
-ruleArray.forEach(element => {
-	app.innerText += element;
-});
+	ruleArray.forEach(element => {
+		app.innerText += element;
+	});
 
-let textSpanish = translate(document.getElementById("app").innerText);
-console.log(textSpanish);
+	let textSpanish = translate(document.getElementById("app").innerText);
+	console.log(textSpanish);
 
-textSpanish = textSpanish.replace(/,/g, ".");
-appTranslate.innerText = textSpanish;
-//}
+	textSpanish = textSpanish.replace(/,/g, ".");
+	appTranslate.innerText = textSpanish;
+	//}
+}
+
+document.getElementById("button").addEventListener("click", myFunction);
