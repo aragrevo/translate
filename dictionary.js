@@ -93,18 +93,24 @@ let diccionary = [
     },
     {
         english: "ANY TIME",
-        spanish: "En cualquier momento"
+        spanish: "En cualquier momento:"
+    },
+    {
+        english: "CANCELLATIONS",
+        spanish: "CANCELACIONES"
+    },
+    {
+        english: "CHANGES",
+        spanish: "CAMBIOS"
     }
 ];
 
 let titles = [
-    "ORIGIN",
+    "ORIGINATING",
     "CANCELLATIONS\n", 
     "CHANGES\n",
     "\n1ST",
-    "\nIF CHANGE"
+    "\nIF CHANGE",
+    "ANY TIME"
 ];
 
-let subtitles = [
-    "ANY TIME"
-]
